@@ -1,7 +1,7 @@
-import Section from "./Section/Section";
-import Statistics from "./Statistics/Statistics";
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
 import Notification from "./Notification/Notification";
+import Section from "./Section/Section";
+import Statistics from "./Statistics/Statistics";
 import React, { Component } from 'react';
 
 class App extends Component {
@@ -19,7 +19,17 @@ class App extends Component {
     //     });
     // };
     
-
+  countPositiveFeedbackPercentage = () => {
+    const { good, neutral, bad } = this.state;
+    if (!good) {
+      return 0;
+    }
+        
+    const total = good + neutral + bad;
+    const positiveFeedback = (good * 100) / total;
+    return Math.round(positiveFeedback);
+  };
+  
   handelClick = name => {
       this.setState(prevState => ({ [name]: prevState[name] + 1 }));
   };
@@ -29,22 +39,12 @@ class App extends Component {
         return good + neutral + bad;
     };
 
-    countPositiveFeedbackPercentage = () => {
-        const { good, neutral, bad } = this.state;
-        if (!good) {
-        return 0;
-        }
-        
-        const total = good + neutral + bad;
-        const positiveFeedback = (good * 100) / total;
-        return Math.round(positiveFeedback);
-    }
-
   render() {
       const { good, neutral, bad } = this.state;
         return (
           <div>
             <Section title="Please leave feadback">
+              
             <FeedbackOptions
                   options={Object.keys(this.state)}
                   onLeaveFeedback={this.handelClick}
@@ -68,7 +68,7 @@ class App extends Component {
           </div>
 
             );
-    };
-};
+    }
+}
 
 export default App;
