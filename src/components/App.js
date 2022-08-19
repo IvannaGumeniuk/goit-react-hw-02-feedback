@@ -2,7 +2,9 @@ import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
 import Notification from "./Notification/Notification";
 import Section from "./Section/Section";
 import Statistics from "./Statistics/Statistics";
+import { Container } from "./App.styled";
 import React, { Component } from 'react';
+
 
 class App extends Component {
     state = {
@@ -42,8 +44,8 @@ class App extends Component {
   render() {
       const { good, neutral, bad } = this.state;
         return (
-          <div>
-            <Section title="Please leave feadback">
+          <Container>
+            <Section title="Please Leave Feadback">
               
             <FeedbackOptions
                   options={Object.keys(this.state)}
@@ -65,7 +67,7 @@ class App extends Component {
                 />
               )}
               </Section>
-          </div>
+          </Container>
 
             );
     }

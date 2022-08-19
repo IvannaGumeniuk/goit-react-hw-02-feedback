@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
-export const Section = styled.div`
-border: 1px solid red;
+export const Title = styled.h2`
 text-align: center;
-
-`
+color: red;
+`;
